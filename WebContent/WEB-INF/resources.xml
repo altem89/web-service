@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+<Resource id="AltemServiceDataSource" type="javax.sql.DataSource">
+  JdbcDriver= com.microsoft.sqlserver.jdbc.SQLServerDriver
+  JdbcUrl= jdbc:sqlserver://ALTEM-PC\\SQLEXPRESS:1433;databaseName=METALBALL;
+  defaultAutoCommit false
+  UserName sa
+  Password cegid.2012
+  JtaManaged true
+</Resource>
+</tomee>
