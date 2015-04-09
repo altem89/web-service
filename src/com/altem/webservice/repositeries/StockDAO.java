@@ -24,8 +24,9 @@ public class StockDAO extends DAO {
 		return dao.create(stock);
 	}
 	
-	public List<Stock> list(int min,int max){
-		return dao.namedFind(Stock.class, "stock.list", min, max);
+	@SuppressWarnings("unchecked")
+	public List<Stock> list(){
+		return (List<Stock>)dao.getEntityManager().createNamedQuery("stock.list").getResultList();
 	}
 	
 	@SuppressWarnings("unchecked")

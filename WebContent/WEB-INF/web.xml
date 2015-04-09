@@ -10,7 +10,7 @@
 	  <security-constraint>
 	 <web-resource-collection>
 	 <web-resource-name>basic authentification pour l'application</web-resource-name>
-	 <url-pattern>/api/user/*</url-pattern>
+	 <url-pattern>/api/*</url-pattern>
 	 </web-resource-collection>
 	 
 	   <auth-constraint>
@@ -18,10 +18,10 @@
 	  <role-name>USER</role-name>
 	 </auth-constraint> 
 	 
-	 <user-data-constraint> 
-	  <!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE-->
-	  <transport-guarantee> NONE</transport-guarantee>
-	 </user-data-constraint>
+	 <!--  <user-data-constraint> 
+	 
+	  <transport-guarantee> CONFIDENTIAL</transport-guarantee>
+	 </user-data-constraint> -->  
 	 
 	 </security-constraint>
 	 

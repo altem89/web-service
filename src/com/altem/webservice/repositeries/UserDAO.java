@@ -40,7 +40,7 @@ public class UserDAO {
 		dao.delete(User.class,username);
 	}
 	
-	public String getClientName(String username){
+	public String getClientCode(String username){
 		User client=dao.find(User.class,username);
 		if(client==null){
 			throw new IllegalArgumentException("unknowned user");

@@ -5,12 +5,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.RollbackException;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+
 
 import com.altem.webservice.entities.Stock;
 import com.altem.webservice.repositeries.StockDAO;
@@ -37,9 +36,8 @@ public class StockService {
 	
 	@Path("/list")
     @GET
-    public List<Stock> list(@QueryParam("first") @DefaultValue("0") int first,
-                           @QueryParam("max") @DefaultValue("400") int max) {
-        return stockDAO.list(first, max);
+    public List<Stock> list() {
+        return stockDAO.list();
     }
 	
 	@Path("/{id}")

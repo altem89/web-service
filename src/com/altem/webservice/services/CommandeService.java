@@ -1,7 +1,11 @@
 package com.altem.webservice.services;
 
 
+import java.io.File;
 import java.util.List;
+
+
+
 
 
 
@@ -19,7 +23,12 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 
 
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.SecurityContext;
+
+
+
 
 
 
@@ -36,11 +45,13 @@ public class CommandeService {
 	private CommandeDAO commandeDAO;
 	
 	@EJB 
-	private UserDAO clientDAO;
+	private UserDAO userDAO;
 	
 	
 	 @Context
 	 SecurityContext securityContext;
+	 
+	 private static final String FACTURE_PATH="e:\\factures\\";
 	
 	
 	@Path("/list")  
@@ -64,9 +75,31 @@ public class CommandeService {
 	@GET
 	@RolesAllowed({"ADMIN","USER"})
 	public List<Commande> getCommandesClient(){
-		String client=clientDAO.getClientName(securityContext.getUserPrincipal().getName());
+		String client=userDAO.getClientCode(securityContext.getUserPrincipal().getName());
 		
 		return commandeDAO.listCommandeClient(client);			
+	}
+	
+	@Path("/facture/pdf/{num}")
+	@Produces("application/pdf")
+	@GET
+	@RolesAllowed({"ADMIN","USER"})
+	public Response getFacture(@PathParam("num") int num){
+		String client=userDAO.getClientCode(securityContext.getUserPrincipal().getName());
+		Long count=commandeDAO.getcountFacture(client, num);
+		
+		if(count>0){
+		File facture=new File(FACTURE_PATH+num+".pdf");
+		ResponseBuilder response= Response.ok(facture);
+		response.header("Content-Disposition",
+				"attachment; filename="+num+".pdf");
+		
+		return response.build();
+		}
+		else{
+			return Response.status(Response.Status.NOT_FOUND).entity("Vous n'avez pas de facture numero:" +num).build();
+		}
+		
 	}
 			
 

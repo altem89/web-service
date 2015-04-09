@@ -25,6 +25,7 @@ pkJoinColumns={
 @NamedQueries({
     @NamedQuery(name = "user.list", query = "select u from User u"),
     @NamedQuery(name="userCompte.get", query="select u from User u where u.username=:login and u.password=:pass")
+   
 })
 @XmlRootElement
 @Cache(

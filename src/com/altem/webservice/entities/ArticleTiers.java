@@ -17,14 +17,14 @@ import org.eclipse.persistence.annotations.CacheType;
 @Table(name="ARTICLETIERS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "refarticle.list", query = "select a from ArticleTiers a where a.refArticle like :ref")
+    @NamedQuery(name = "articleTiers.list", query = "select a from ArticleTiers a where a.refTiers=:clientCode ")
    
 })
 @Cache(
 		type=CacheType.SOFT,
 		size=64000,
 		expiry=360000,   //6 minutes
-		coordinationType=CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS)
+		coordinationType=CacheCoordinationType.INVALIDATE_CHANGED_OBJECTS )
 
 public class ArticleTiers {
 	

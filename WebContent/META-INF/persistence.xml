@@ -12,10 +12,12 @@
     <class>com.altem.webservice.entities.Commande</class>
      <class>com.altem.webservice.entities.CommandePK</class>
      <class>com.altem.webservice.entities.StockPK</class>
-    
+      <class>com.altem.webservice.entities.ChoixCode</class>
+      <class>com.altem.webservice.entities.ChoixCodePK</class>
       <class>com.altem.webservice.entities.User</class>
        <class>com.altem.webservice.entities.ArticleTiers</class>
-     
+        <class>com.altem.webservice.entities.ChoixExt</class>
+      <class>com.altem.webservice.entities.ChoixExtPK</class>
    
   
     <properties>

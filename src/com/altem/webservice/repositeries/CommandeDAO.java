@@ -31,5 +31,11 @@ public class CommandeDAO {
 		comPK.setNumeroOrdre(numOrdre);
 		return dao.find(Commande.class, comPK);
 	}
+	
+	public Long getcountFacture(String clientCode,int numero){
+		return (Long) dao.getEntityManager().createNamedQuery("factureNum.findCount").setParameter("client", clientCode)
+				.setParameter("num", numero).getSingleResult();
+				       
+	}
 
 }

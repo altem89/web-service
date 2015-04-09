@@ -26,7 +26,8 @@ import org.eclipse.persistence.annotations.CacheType;
 @NamedQueries({
     @NamedQuery(name = "commande.list", query = "select c from Commande c where c.naturePiece='CC' "),
     
-    @NamedQuery(name="commandeClient.list", query="select c from Commande c where c.naturePiece='CC' and c.client=:name")
+    @NamedQuery(name="commandeClient.list", query="select c from Commande c where c.naturePiece='CC' and c.client=:name"),
+    @NamedQuery(name="factureNum.findCount", query="select count(c) from Commande c where c.client=:client and c.numero=:num")
 })
 @Cache(
 		type=CacheType.SOFT,

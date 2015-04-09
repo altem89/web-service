@@ -15,8 +15,8 @@ public class ArticleTiersDAO {
 	private DAO dao;
 	
 	@SuppressWarnings("unchecked")
-	public List<ArticleTiers> getAllArticleLikeRef(String reference){
-		return (List<ArticleTiers>) dao.getEntityManager().createNamedQuery("refarticle.list").setParameter("ref", reference+"%").getResultList();
+	public List<ArticleTiers> getAllUserArticleTiers(String client){
+		return (List<ArticleTiers>) dao.getEntityManager().createNamedQuery("articleTiers.list").setParameter("clientCode", client).getResultList();
 	}
 
 }
